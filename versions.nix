@@ -10,6 +10,17 @@ To calculate the hash of an installer, use a command like this:
 let
   versions = [
     {
+      version = "14.3.0";
+      lang = "en";
+      language = "English";
+      # First build with fake hash to learn the correct one:
+      # nix --extra-experimental-features nix-command hash file Wolfram_14.3.0_LIN.sh
+      # or let the build fail and print the wanted sha256, then paste it here.
+      sha256 = lib.fakeSha256;
+      # Adjust the filename if your installer differs (e.g. _Bndl or _LIN_Bndl).
+      installer = "Wolfram_14.3.0_LIN.sh";
+    }
+    {
       version = "14.2.1";
       lang = "en";
       language = "English";
