@@ -18,7 +18,7 @@ let
       # or let the build fail and print the wanted sha256, then paste it here.
       sha256 = "sha256-FvcXXijGOcuRA1UFyVvPIyR1YaK/qrkMpLxf+mz+A/c=";
       # Adjust the filename if your installer differs (e.g. _Bndl or _LIN_Bndl).
-      installer = "Wolfram_14.3.0_LIN.sh";
+      installer = "Wolfram_14.3.0_LIN_Bndl.sh";
     }
     {
       version = "14.2.1";
