@@ -29,6 +29,7 @@
               # Pin the version we want explicitly so default.nix doesn't have to guess.
               version = "14.3.0";
               webdoc = false;
+              cudaSupport = true;
             };
 
             # Convenience alias
