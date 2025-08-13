@@ -217,6 +217,28 @@ in
       done
     '';
 
+    postFixup = ''
+      # wrap everything Wolfram installed
+      for bin in $out/libexec/Mathematica/Executables/*; do
+        wrapProgram "$bin" ''${wrapProgramFlags[@]}
+      done
+
+      # expose well-known launchers on PATH
+      mkdir -p $out/bin
+      # GUI
+      if [ -e "$out/libexec/Mathematica/Executables/Mathematica" ]; then
+        ln -sf $out/libexec/Mathematica/Executables/Mathematica $out/bin/mathematica
+      fi
+      # CLI kernel
+      if [ -e "$out/libexec/Mathematica/Executables/MathKernel" ]; then
+        ln -sf $out/libexec/Mathematica/Executables/MathKernel $out/bin/MathKernel
+      fi
+      # wolframscript (if present)
+      if [ -e "$out/libexec/Mathematica/Executables/wolframscript" ]; then
+        ln -sf $out/libexec/Mathematica/Executables/wolframscript $out/bin/wolframscript
+      fi
+    '';
+
     dontConfigure = true;
     dontBuild = true;
 
